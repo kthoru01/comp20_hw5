@@ -1,0 +1,83 @@
+<!-- Katya Thorup -->
+<!-- COMP 20 HW 5 -->
+<!-- Due 2/20/2019 -->
+<!-- HTML File used to create a simple JavaScript program -->
+
+<!-- Purpose: Create an online order for a hotdog stand --> 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Joe's Hotdogs</title>
+
+	<link rel = "stylesheet" type = "text/css" href = "reset.css" />
+
+	<style type="text/css">
+		html,body {font-size:20px;}
+		h1 {font-size: 30px; font-weight: bold;}
+		strong {font-size: 25px; font-weight: bold;}
+	</style>
+	
+</head>
+
+<body>
+
+	<script language="javascript">
+
+	/* Ask for a number of hotdogs & checks for incorrect/blank input */
+	var num_hotdogs = prompt ("How many hotdogs?", "1");
+	num_hotdogs = parseInt(num_hotdogs);
+	if (isNaN(num_hotdogs) || num_hotdogs < 0) {
+		num_hotdogs = 0;
+	}
+
+	/* Ask for a number of fries & checks for incorrect/blank input */
+	var num_fries = prompt ("How many fries?", "1");
+	num_fries = parseInt(num_fries);
+	if (isNaN(num_fries) || num_fries < 0) {
+		num_fries = 0;
+	}
+
+	/* Ask for a number of sodas & checks for incorrect/blank input */
+	var num_sodas = prompt ("How many sodas?", "1");
+	num_sodas = parseInt(num_sodas);
+	if (isNaN(num_sodas) || num_sodas < 0) {
+		num_sodas = 0;
+	}
+
+	/* Compute purchase cost */
+	var hotdog_price = 3.25, fries_price = 2, soda_price = 1.50;
+	
+	var hotdogs_cost = num_hotdogs * hotdog_price;
+	var fries_cost = num_fries * fries_price;
+	var sodas_cost = num_sodas * soda_price;
+
+	var subtotal = hotdogs_cost + fries_cost + sodas_cost;
+
+	document.write("<h1>Welcome to Joe's great hotdogs!</h1><br>");
+	document.write("<strong>Your Order</strong><br><br>");
+
+	document.write("# Hotdogs: " + num_hotdogs + " at $3.25 is $" + hotdogs_cost.toFixed(2) + "<br>");
+	document.write("# Fries: " + num_fries + " at $2.00 is $" + fries_cost.toFixed(2) + "<br>");
+	document.write("# Sodas: " + num_sodas + " at $1.50 is $" + sodas_cost.toFixed(2) + "<br>");
+
+	/* Check if purchase qualifies for the 10% discount (purchase cost >= $20) */
+	if (subtotal >= 20.00) {
+		document.write("You qualified for our 10% discount. <br>");
+		subtotal = subtotal * 0.9;
+	}
+	document.write("Subtotal: $" + subtotal.toFixed(2) + "<br>");
+
+	/* Compute Massachusetts 6.25% meals tax and total */
+	var mealsTax = subtotal * 0.0625;
+	document.write("Meals Tax: $" + mealsTax.toFixed(2) + "<br>");
+
+	var total = subtotal + mealsTax;
+	document.write("Total: $" + total.toFixed(2) + "<br>");
+
+	</script>
+
+</body>
+</html>
